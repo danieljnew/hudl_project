@@ -3,4 +3,4 @@ BAD_USERNAME = "wrong@gmail.com"
 BAD_PASSWORD = "badpassword"
 LOGGED_IN_COACH = "Coach New"
 
-CHROME_BINARY_PATH = "/Users/dnew/Downloads/chromedriver"
+CHROME_BINARY_PATH = "PUT-PATH-TO-CHROMEDRIVER-HERE"

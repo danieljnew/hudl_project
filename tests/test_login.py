@@ -66,3 +66,21 @@ class TestLogin(object):
         login_page.go_to_url(const.HUDL_LOGIN_URL)
         login_page.login_with_credentials(const.BAD_USERNAME, load_credentials[1])
         assert login_page.get_login_error_message() is not None
+
+    def test_no_email_or_password(self, base_driver: webdriver):
+        login_page = LoginPage(base_driver)
+        login_page.go_to_url(const.HUDL_LOGIN_URL)
+        login_page.login_with_credentials("", "")
+        assert login_page.get_login_error_message() is not None
+
+    def test_no_email_correct_password(self, base_driver: webdriver, load_credentials):
+        login_page = LoginPage(base_driver)
+        login_page.go_to_url(const.HUDL_LOGIN_URL)
+        login_page.login_with_credentials("", load_credentials[1])
+        assert login_page.get_login_error_message() is not None
+
+    def test_no_password_correct_email(self, base_driver:webdriver, load_credentials):
+        login_page = LoginPage(base_driver)
+        login_page.go_to_url(const.HUDL_LOGIN_URL)
+        login_page.login_with_credentials(load_credentials[0], "")
+        assert login_page.get_login_error_message() is not None
